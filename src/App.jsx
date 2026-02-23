@@ -1,29 +1,31 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Footer from "./components/Footer";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import DeleteModal from "./components/DeleteModal";
 import DeleteBanner from "./components/DeleteBanner";
 import ErrorBoundary from "./components/ErrorBoundary";
 
+import Home from "./pages/Home";
 import ListingDetail from "./pages/ListingDetail";
 import AddListing from "./pages/AddListing";
-import Home from "./pages/Home";
 
 import { useListings } from "./hooks/useListings";
 
 function App() {
   const location = useLocation();
-  const isAddPage = location.pathname === "/add-listing";
-  location.pathname === "/add-listing" ||
+
+  // Hide navbar actions on add/edit page
+  const isAddOrEditPage =
+    location.pathname === "/add-listing" ||
     location.pathname.startsWith("/edit/");
 
-  // Data logic
+  // Listings logic
   const { allListings, addListing, updateListing, deleteListing, rateListing } =
     useListings();
 
-  // UI state
+  // UI states
   const [deleteMode, setDeleteMode] = useState(false);
   const [pendingDeleteId, setPendingDeleteId] = useState(null);
   const [darkMode, setDarkMode] = useState(
@@ -57,18 +59,21 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div className="bg-gray-50 dark:bg-gray-800 min-h-screen transition-colors duration-300">
+      <div className="bg-gray-50 dark:bg-gray-800 min-h-screen transition-colors duration-300 flex flex-col">
+        {/* Navbar */}
         <Navbar
           deleteMode={deleteMode}
           setDeleteMode={setDeleteMode}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
-          hideActions={isAddPage}
+          hideActions={isAddOrEditPage}
         />
 
+        {/* Delete Mode Banner */}
         {deleteMode && <DeleteBanner />}
 
-        <div key={location.pathname} className="animate-fade">
+        {/* Main Content */}
+        <div className="flex-grow animate-fade">
           <Routes>
             <Route
               path="/"
@@ -115,9 +120,12 @@ function App() {
               }
             />
           </Routes>
-          <Footer />
         </div>
 
+        {/* Footer */}
+        <Footer />
+
+        {/* Delete Modal */}
         {pendingDeleteId && (
           <DeleteModal onCancel={cancelDelete} onConfirm={confirmDelete} />
         )}
