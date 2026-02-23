@@ -7,7 +7,7 @@ Users can add, edit, delete and rate property listings with persistent local sto
 
 ## 🚀 Live Demo
 
-👉 [Live Project Link Here]
+👉 [[Live Project Link Here](https://airbnb-clone-smoky-kappa.vercel.app/)]
 
 ---
 
