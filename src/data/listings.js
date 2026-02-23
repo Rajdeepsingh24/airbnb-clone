@@ -11,6 +11,10 @@ const listings = [
       "Enjoy a luxurious beachside experience with stunning ocean views and private access to the shore.",
     rating: 4.9,
     reviews: 182,
+    guests: 3,
+    bedrooms: 7,
+    bathrooms: 4,
+    area: 1200,
   },
   {
     id: 2,
@@ -23,6 +27,10 @@ const listings = [
       "Peaceful wooden cabin surrounded by snow-capped mountains. Ideal for couples and remote workers.",
     rating: 4.8,
     reviews: 124,
+    guests: 4,
+    bedrooms: 9,
+    bathrooms: 5,
+    area: 2200,
   },
   {
     id: 3,
@@ -36,6 +44,10 @@ const listings = [
       "Stylish apartment in the heart of the city with easy access to nightlife, shopping and restaurants.",
     rating: 4.7,
     reviews: 96,
+    guests: 4,
+    bedrooms: 6,
+    bathrooms: 2,
+    area: 1100,
   },
   {
     id: 4,
@@ -49,6 +61,10 @@ const listings = [
       "Experience calm desert landscapes with modern comfort and beautiful sunset views.",
     rating: 4.6,
     reviews: 88,
+    guests: 2,
+    bedrooms: 1,
+    bathrooms: 1,
+    area: 800,
   },
   {
     id: 5,
@@ -61,6 +77,10 @@ const listings = [
       "Charming lakeside cottage with peaceful surroundings and breathtaking sunrise views.",
     rating: 4.8,
     reviews: 143,
+    guests: 2,
+    bedrooms: 4,
+    bathrooms: 2,
+    area: 690,
   },
   {
     id: 6,
@@ -74,6 +94,10 @@ const listings = [
       "Homes featuring private docks,, sprawling decks, and modern amenities that blend with the serene backwaters.",
     rating: 4.3,
     reviews: 129,
+    guests: 1,
+    bedrooms: 3,
+    bathrooms: 1,
+    area: 290,
   },
 ];
 

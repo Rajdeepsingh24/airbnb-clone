@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import Footer from "./components/Footer";
 
 import Navbar from "./components/Navbar";
 import DeleteModal from "./components/DeleteModal";
@@ -14,6 +15,9 @@ import { useListings } from "./hooks/useListings";
 
 function App() {
   const location = useLocation();
+  const isAddPage = location.pathname === "/add-listing";
+  location.pathname === "/add-listing" ||
+    location.pathname.startsWith("/edit/");
 
   // Data logic
   const { allListings, addListing, updateListing, deleteListing, rateListing } =
@@ -59,6 +63,7 @@ function App() {
           setDeleteMode={setDeleteMode}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
+          hideActions={isAddPage}
         />
 
         {deleteMode && <DeleteBanner />}
@@ -110,6 +115,7 @@ function App() {
               }
             />
           </Routes>
+          <Footer />
         </div>
 
         {pendingDeleteId && (

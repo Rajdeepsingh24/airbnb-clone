@@ -90,12 +90,17 @@ function AddListing({ addListing, updateListing, allListings }) {
     <div className="max-w-3xl mx-auto p-8">
       <button
         onClick={() => navigate(-1)}
-        className="mb-6 text-rose-500 font-medium hover:underline"
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full 
+             bg-gray-100 dark:bg-gray-800 
+             text-gray-800 dark:text-gray-200 
+             hover:bg-gray-200 dark:hover:bg-gray-700
+             transition duration-200 text-sm font-medium"
       >
-        ← Back
+        <span className="text-lg">←</span>
+        BACK
       </button>
 
-      <h1 className="text-3xl font-bold mb-6">
+      <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-yellow-400">
         {isEditMode ? "Edit Listing" : "Add New Listing"}
       </h1>
 
@@ -183,7 +188,7 @@ function AddListing({ addListing, updateListing, allListings }) {
 
         <button
           type="submit"
-          className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:opacity-90 transition"
+          className="w-full bg-black dark:bg-green-500 text-white dark:text-black py-3 rounded-xl font-semibold hover:opacity-90 transition"
         >
           {isEditMode ? "Update Listing" : "Add Listing"}
         </button>

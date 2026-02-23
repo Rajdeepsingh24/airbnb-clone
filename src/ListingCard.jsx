@@ -8,6 +8,12 @@ function ListingCard({ data, onDelete, deleteMode, index }) {
     location = "Unknown Location",
     price = 0,
     image,
+    category = "General",
+    rating = 0,
+    reviews = 0,
+    guests = 0,
+    bedrooms = 0,
+    bathrooms = 0,
   } = data;
 
   return (
@@ -29,12 +35,24 @@ function ListingCard({ data, onDelete, deleteMode, index }) {
                      group-hover:scale-110"
         />
 
-        {/* Soft Hover Overlay */}
+        {/* Category Badge */}
         <div
-          className="absolute inset-0 bg-black/0 
-                        group-hover:bg-black/5 
-                        transition-all duration-500"
-        ></div>
+          className="absolute top-3 left-3 bg-slate-100/90 dark:bg-slate-100/90 
+                        text-xs px-3 py-1 rounded-full font-medium 
+                        backdrop-blur-md shadow-sm"
+        >
+          {category}
+        </div>
+
+        {/* Rating Badge */}
+        {reviews > 0 && (
+          <div
+            className="absolute bottom-3 left-3 bg-black/70 text-white 
+                          text-xs px-2 py-1 rounded-full backdrop-blur-sm"
+          >
+            ⭐ {rating} ({reviews})
+          </div>
+        )}
 
         {/* Delete Mode Overlay */}
         {deleteMode && (
@@ -60,7 +78,7 @@ function ListingCard({ data, onDelete, deleteMode, index }) {
       )}
 
       {/* Content */}
-      <div className="p-5 flex flex-col gap-1.5">
+      <div className="p-5 flex flex-col gap-2">
         <h2
           className="text-lg font-semibold tracking-tight 
                        text-gray-900 dark:text-white truncate"
@@ -68,27 +86,34 @@ function ListingCard({ data, onDelete, deleteMode, index }) {
           {title}
         </h2>
 
-        <p
-          className="text-gray-500 dark:text-gray-400 
-                      text-sm truncate"
-        >
+        <p className="text-gray-500 dark:text-gray-400 text-sm truncate">
           {location}
         </p>
 
+        {/* Mini Property Info */}
+        <div className="flex gap-4 text-xs text-gray-500 dark:text-gray-400 mt-1">
+          <span>👤 {guests}</span>
+          <span>🛏 {bedrooms}</span>
+          <span>🛁 {bathrooms}</span>
+        </div>
+
+        {/* Price */}
         <div className="pt-2">
-          <p
-            className="text-base font-bold 
-                        text-gray-900 dark:text-white"
-          >
+          <p className="text-base font-bold text-gray-900 dark:text-white">
             ₹{Number(price).toLocaleString()}
-            <span
-              className="text-sm font-normal 
-                             text-gray-500 dark:text-gray-400"
-            >
+            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
               {" "}
               / night
             </span>
           </p>
+        </div>
+
+        {/* Hover CTA */}
+        <div
+          className="text-rose-500 text-sm font-medium opacity-0 
+                        group-hover:opacity-100 transition duration-300"
+        >
+          View Details →
         </div>
       </div>
     </Link>

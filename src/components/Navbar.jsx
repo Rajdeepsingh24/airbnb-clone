@@ -9,6 +9,7 @@ function Navbar({
   showSearch,
   darkMode,
   setDarkMode,
+  hideActions,
 }) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -61,29 +62,31 @@ function Navbar({
         )}
 
         {/* Action Buttons */}
-        <div className="flex gap-3 w-full md:w-auto">
-          <button
-            onClick={() => setDeleteMode((prev) => !prev)}
-            className={`flex-1 md:flex-none text-sm px-4 py-2 rounded-full 
-                       transform active:scale-95 transition duration-200 ${
-                         deleteMode
-                           ? "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-white"
-                           : "bg-rose-500 hover:bg-rose-600 text-white"
-                       }`}
-          >
-            {deleteMode ? "Cancel" : "Delete"}
-          </button>
+        {!hideActions && (
+          <div className="flex gap-3 w-full md:w-auto">
+            <button
+              onClick={() => setDeleteMode((prev) => !prev)}
+              className={`flex-1 md:flex-none text-sm px-4 py-2 rounded-full 
+                 transform active:scale-95 transition duration-200 ${
+                   deleteMode
+                     ? "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-white"
+                     : "bg-rose-500 hover:bg-rose-600 text-white"
+                 }`}
+            >
+              {deleteMode ? "Cancel" : "Delete"}
+            </button>
 
-          <Link
-            to="/add-listing"
-            className="flex-1 md:flex-none text-sm px-4 py-2 bg-black dark:bg-white 
-                       dark:text-black text-white shadow-md hover:shadow-lg 
-                       rounded-full text-center 
-                       transform active:scale-95 transition duration-200 hover:opacity-90"
-          >
-            Add Listing
-          </Link>
-        </div>
+            <Link
+              to="/add-listing"
+              className="flex-1 md:flex-none text-sm px-4 py-2 bg-black dark:bg-white 
+                 dark:text-black text-white shadow-md hover:shadow-lg 
+                 rounded-full text-center 
+                 transform active:scale-95 transition duration-200 hover:opacity-90"
+            >
+              Add Listing
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );
