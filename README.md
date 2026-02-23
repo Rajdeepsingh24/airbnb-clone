@@ -13,8 +13,8 @@ Users can add, edit, delete and rate property listings with persistent local sto
 
 ## 📸 Preview
 
-![App Screenshot 1](./Screenshot 1.png)
-![App Screenshot 2](./Screenshot 2.png)
+![App Screenshot 1](./Screenshot1.png)
+![App Screenshot 2](./Screenshot2.png)
 
 ## 📌 Features
 
