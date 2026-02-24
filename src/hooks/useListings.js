@@ -19,18 +19,28 @@ export function useListings() {
         return defaultListings;
       }
 
-      // Ensure required fields exist
-      const isValid = parsed.every(
-        (item) =>
-          item.id !== undefined &&
-          item.title &&
-          item.location &&
-          item.price !== undefined,
-      );
-
-      return isValid ? parsed : defaultListings;
-    } catch (error) {
-      console.error("LocalStorage error:", error);
+      // Ensure required fields exist (strict validation)
+      const isValid =
+        Array.isArray(parsed) &&
+        parsed.length > 0 &&
+        parsed.every(
+          (item) =>
+            item.id !== undefined &&
+            typeof item.title === "string" &&
+            typeof item.location === "string" &&
+            item.price !== undefined &&
+            item.guests !== undefined &&
+            item.bedrooms !== undefined &&
+            item.bathrooms !== undefined &&
+            item.area !== undefined,
+        );
+      if (isValid) {
+        return parsed;
+      } else {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultListings));
+        return defaultListings;
+      }
+    } catch {
       return defaultListings;
     }
   });

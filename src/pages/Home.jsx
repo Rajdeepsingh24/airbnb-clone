@@ -12,10 +12,10 @@ function Home({ allListings, deleteMode, onDelete, loading }) {
     searchParams.get("sort") || "default",
   );
   const heroImages = [
-    "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg",
-    "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg",
-    "https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg",
-    "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg",
+    "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1200",
   ];
 
   const [currentImage, setCurrentImage] = useState(0);
@@ -37,7 +37,7 @@ function Home({ allListings, deleteMode, onDelete, loading }) {
       setCurrentImage((prev) =>
         prev === heroImages.length - 1 ? 0 : prev + 1,
       );
-    }, 4000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
@@ -99,7 +99,10 @@ function Home({ allListings, deleteMode, onDelete, loading }) {
             <img
               key={index}
               src={img}
-              alt="hero"
+              alt="Luxury stay background"
+              loading={index === currentImage ? "eager" : "lazy"}
+              width="1200"
+              height="800"
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1500 ease-in-out ${
                 index === currentImage ? "opacity-100" : "opacity-0"
               }`}
