@@ -136,6 +136,7 @@ function Home({ allListings, deleteMode, onDelete, loading }) {
             <button
               key={index}
               onClick={() => setCurrentImage(index)}
+              aria-label={`Go to hero slide ${index + 1}`}
               className={`w-3 h-3 rounded-full transition ${
                 index === currentImage
                   ? "bg-white scale-125"

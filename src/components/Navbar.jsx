@@ -39,8 +39,9 @@ function Navbar({
 
           <button
             onClick={() => setDarkMode(!darkMode)}
+            aria-label="Toggle dark mode"
             className="text-sm px-4 py-2 rounded-full border dark:border-gray-600 dark:text-white 
-                       transform active:scale-95 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+             transform active:scale-95 transition duration-200 hover:bg-gray-100 dark:hover:bg-gray-800"
           >
             {darkMode ? "☀ Light" : "🌙 Dark"}
           </button>
@@ -48,17 +49,23 @@ function Navbar({
 
         {/* Search */}
         {showSearch && (
-          <input
-            type="text"
-            placeholder="Search stays..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full md:w-64 px-4 py-2.5 border border-gray-300 dark:border-gray-600 
-                       bg-white dark:bg-gray-800 dark:text-white 
-                       rounded-full text-sm focus:outline-none 
-                       focus:ring-2 focus:ring-rose-500 
-                       transition duration-200"
-          />
+          <>
+            <label htmlFor="search" className="sr-only">
+              Search stays
+            </label>
+            <input
+              id="search"
+              type="text"
+              placeholder="Search stays..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full md:w-64 px-4 py-2.5 border border-gray-300 dark:border-gray-600 
+                 bg-white dark:bg-gray-800 dark:text-white 
+                 rounded-full text-sm focus:outline-none 
+                 focus:ring-2 focus:ring-rose-500 
+                 transition duration-200"
+            />
+          </>
         )}
 
         {/* Action Buttons */}
@@ -66,12 +73,13 @@ function Navbar({
           <div className="flex gap-3 w-full md:w-auto">
             <button
               onClick={() => setDeleteMode((prev) => !prev)}
+              aria-label="Toggle delete mode"
               className={`flex-1 md:flex-none text-sm px-4 py-2 rounded-full 
-                 transform active:scale-95 transition duration-200 ${
-                   deleteMode
-                     ? "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-white"
-                     : "bg-rose-500 hover:bg-rose-600 text-white"
-                 }`}
+     transform active:scale-95 transition duration-200 ${
+       deleteMode
+         ? "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-white"
+         : "bg-rose-500 hover:bg-rose-600 text-white"
+     }`}
             >
               {deleteMode ? "Cancel" : "Delete"}
             </button>
