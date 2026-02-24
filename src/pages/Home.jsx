@@ -132,19 +132,19 @@ function Home({ allListings, deleteMode, onDelete, loading }) {
           </button>
         </div>
         <div className="absolute bottom-6 flex gap-3 z-20">
-          {heroImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentImage(index)}
-              aria-label={`Go to hero slide ${index + 1}`}
-              className={`w-3 h-3 rounded-full transition ${
-                index === currentImage
-                  ? "bg-white scale-125"
-                  : "bg-white/50 hover:bg-white"
-              }`}
-            />
-          ))}
-        </div>
+  {heroImages.map((_, index) => (
+    <button
+      key={index}
+      onClick={() => setCurrentImage(index)}
+      aria-label={`Go to hero slide ${index + 1}`}
+      className={`w-3 h-3 rounded-full transition ${
+        index === currentImage
+          ? "bg-white scale-125"
+          : "bg-white/50 hover:bg-white"
+      }`}
+    />
+  ))}
+</div>
       </section>
 
       {/* CONTENT */}
