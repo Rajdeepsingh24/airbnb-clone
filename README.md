@@ -116,7 +116,7 @@ src/
 
 ## ⚙ Installation
 
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git  
+git clone git clone https://github.com/Rajdeepsingh24/airbnb-clone.git
 cd airbnb-clone  
 npm install  
 npm run dev
